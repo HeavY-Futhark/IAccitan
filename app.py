@@ -7,12 +7,12 @@ app = Flask(__name__)
 
 
 # Placeholder Translate functions
-def translate_fr_occ(text):
+def translate_fr_occ(text, dialect):
     translated_text = "Hello World !"
     return translated_text
 
 
-def translate_occ_fr(text):
+def translate_occ_fr(text, dialect):
     translated_text = "Goodbye World !"
     return translated_text
 
@@ -26,14 +26,16 @@ def index():
 @app.route('/translate-fr-occ', methods=['POST'])
 def translate_text():
     text = request.form['text']
-    translated_text = translate_fr_occ(text)
+    dialect = request.form['dialect']
+    translated_text = translate_fr_occ(text, dialect)
     return translated_text
 
 
 @app.route('/translate-occ-fr', methods=['POST'])
 def translate_text_2():
     text = request.form['text']
-    translated_text = translate_occ_fr(text)
+    dialect = request.form['dialect']
+    translated_text = translate_occ_fr(text, dialect)
     return translated_text
 
 

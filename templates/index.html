@@ -11,6 +11,14 @@
     <div class="container">
         <h1>Traduction Français - Occitan</h1>
         <div class="trad-container">
+            <div class="dialect-container">
+                <label for="dialect-fr-occ">Dialecte :</label>
+                <select id="dialect-fr-occ">
+                    <option value="gascon">Gascon</option>
+                    <option value="languedoc">Languedoc</option>
+                    <option value="limousin">Limousin</option>
+                </select>
+            </div>
             <div class="input-container">
                 <textarea id="inputText-fr" rows="4" cols="25" placeholder="Enter text to translate"></textarea>
                 <textarea id="outputText-occ" rows="4" cols="25" placeholder="Translated text" readonly></textarea> 
@@ -19,6 +27,14 @@
         </div>
 
         <div class="trad-container">
+            <div class="dialect-container">
+                <label for="dialect-occ-fr">Dialecte :</label>
+                <select id="dialect-occ-fr">
+                    <option value="gascon">Gascon</option>
+                    <option value="languedoc">Languedoc</option>
+                    <option value="limousin">Limousin</option>
+                </select>
+            </div>
             <div class="input-container">
                 <textarea id="inputText-occ" rows="4" cols="25" placeholder="Enter text to translate"></textarea>
                 <textarea id="outputText-fr" rows="4" cols="25" placeholder="Translated text" readonly></textarea>
@@ -31,14 +47,16 @@
         $(document).ready(function(){
             $('#translateButton-fr-occ').click(function(){
                 var text = $('#inputText-fr').val();
-                $.post('/translate-fr-occ', { text: text }, function(data){
+                var dialect = $('#dialect-occ-fr').val();
+                $.post('/translate-fr-occ', { text: text, dialect : dialect }, function(data){
                     $('#outputText-occ').val(data);
                 });
             });
 
             $('#translateButton-occ-fr').click(function(){
                 var text = $('#inputText-occ').val();
-                $.post('/translate-occ-fr', { text: text }, function(data){
+                var dialect = $('#dialect-occ-fr').val();
+                $.post('/translate-occ-fr', { text: text, dialect : dialect }, function(data){
                     $('#outputText-fr').val(data);
                 });
             });
