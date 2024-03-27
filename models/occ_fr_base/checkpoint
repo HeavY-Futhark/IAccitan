@@ -1,0 +1,2 @@
+model_checkpoint_path: "occ_fr"
+all_model_checkpoint_paths: "occ_fr"
